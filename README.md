@@ -9,11 +9,11 @@ Assuming that Wordle accepts all Scrabble words and chooses the answer from thes
 
 Wordle gives us information on a letter-by-letter basis, so we want to maximize the expected amount of ruling out that we can do with each letter of our guess. To that end, there are three possibilities for what sort of information we can learn from a guessed letter:
 
-- (1) that the letter is in the answer, in the position we guessed it. In this case, we can rule out all the words that do not have this letter in this position. 
+- **Scenario 1** the letter is in the answer, in the position we guessed it. In this case, we can rule out all the words that do not have this letter in this position. 
 
-- (2) that the letter is in the answer, but in a different position. In this case, we can rule out all of the words that do not contain this letter at all.
+- **Scenario 2** the letter is in the answer, but in a different position. In this case, we can rule out all of the words that do not contain this letter at all.
 
-- (3) that this letter does not appear in the answer. In this case, we can rule out all of the words that contain this letter.
+- **Scenario 3** this letter does not appear in the answer. In this case, we can rule out all of the words that contain this letter.
 
 
 However, knowing the potential payoff for each of these possibilties is not enough - we also need an estimate of the probabilty that (1) vs. (2) vs. (3) will be the case. [E.g., there is only one word with "Q" in the second to last spot - putting a "Q" there could potentially rule out a lot of potential words ... but it is also exceedingly unlikely to be correct!]
@@ -24,21 +24,25 @@ To estimate these probabilities, we need some information on the distribution of
 
 From this count of word frequencies, we can estimate the probabilities for each of our scenarios as:
 
-(1) [...]
+- (A) Prob(Scenario 1) = []
 
-(2) [...]
+- (B) Prob(Scenario 2) = []
 
-(3) [...]
+- (C) Prob(Scenario 2) = []
 
 We can estimate the payoffs as:
 
-(A) [...]
+- (A) Payoff(Scenario 1) = []
 
-(B) [...]
+- (B) Payoff(Scenario 2) = []
 
-(C) [...]
+- (C) Payoff(Scenario 2) = []
 
-Accordingly, the expected value of including a letter in a given position for our guess is: (1)(A)+(2)(B)+(3)(C), and the total expected value of a guess would be:
+Accordingly, the expected value of including a letter in a given position for our guess is: 
+
+EV_i = sum_j^3 Prob(Scenario j)* Payoff(Scenario j)
+
+and the total expected value of a guess would be:
 
 val(guess) = EV_1 + ... + EV_5
 
