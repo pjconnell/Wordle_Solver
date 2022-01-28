@@ -22,32 +22,32 @@ To estimate the probability that each of these scenarios would happen, we need s
 
 ![alt text](https://github.com/pjconnell/Wordle_Solver/blob/main/letter_freq.PNG)
 
-From this count of word frequencies, we can estimate the probabilities for each of our scenarios as:
+From this count of word frequencies, for a position *i* and letter *j* we can estimate the probabilities for each of our scenarios as:
 
-- Prob(Scenario 1) = []
+- Prob(Scenario 1) = (number of words that contain letter *j* in position *i*)/(total number of remaining words)
 
-- Prob(Scenario 2) = []
+- Prob(Scenario 2) = [(number of words that contain letter *j*)-(number of words that contain letter *j* in position *i*)]/(total number of remaining words)
 
-- Prob(Scenario 2) = []
+- Prob(Scenario 3) = [(total number of remaining words)-(number of words that contain letter *j*)]/(total number of remaining words)
+-
+We can estimate the payoffs (i.e., how many words each scenerio would be able to rule out) as:
 
-We can estimate the payoffs as:
+- Payoff(Scenario 1) = (total number of remaining words)-(number of words that contain letter *j* in position *i*)
 
-- Payoff(Scenario 1) = []
+- Payoff(Scenario 2) = (total number of remaining words)-[(number of words that contain letter *j*)-(number of words that contain letter *j* in position *i*)]
 
-- Payoff(Scenario 2) = []
+- Payoff(Scenario 3) = (number of words that contain letter *j*)
 
-- Payoff(Scenario 2) = []
+Accordingly, the expected value of including a letter in position *i* for our guess is: 
 
-Accordingly, the expected value of including a letter in a given position for our guess is: 
-
-EV_i = sum_j^3 Prob(Scenario j)* Payoff(Scenario j)
+> EV_*i* = Prob(Scenario 1)* Payoff(Scenario 1) + Prob(Scenario 2)* Payoff(Scenario 2) + Prob(Scenario 3)* Payoff(Scenario 3)
 
 and the total expected value of a guess would be:
 
-val(guess) = EV_1 + ... + EV_5
+> val(guess) = EV_1 + ... + EV_5
 
-*Note of caution*: to avoid double-counting the benefit of (2) and (3) for letters that appear more than once in a word, (B) and (C) should =0 for the second (or higher) occurence of a letter in a word.
+*Note of caution*: to avoid double-counting the benefit of **Scenario 2** and **Scenario 3** for letters that appear more than once in a word, Payoff(Scenario 2) and Payoff(Scenario 3) should =0 for the second (or higher) occurence of a letter in a word.
 
-Running that on the full list of eligible Scrabble words leaves "ROATE" as the optimal first choice.
+After computing the expected value for guessing each word on the remaining word list, we can choose the maximum and plug it into Wordle!
 
 The attached program will update the list of words based on information from the results of your guess - recalculating the frequency chart, payoffs and probabilites for the list or remaining words. So far, it has been able to guess the correct Wordle in 2-4 guesses (and hasn't failed yet!).
