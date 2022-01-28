@@ -15,7 +15,6 @@ Wordle gives us information on a letter-by-letter basis, so we want to maximize 
 
 - **Scenario 3**: if the letter does not appear in the answer, then we can rule out all of the words that contain this letter.
 
-
 However, knowing the number of words we can rule out for each of these possibilties is not enough - we also need an estimate of the probabilty that **Scenario 1** vs. **Scenario 2** vs. **Scenario 3** will be the case. [E.g., there is only one word with "Q" in the second to last spot - "BURQA" - so, putting a "Q" there could potentially rule out a lot of words ... but it is also exceedingly unlikely (~1/9,000 if 5-letter Scrabble words are chosen with uniform probability) to be the case that this happens!]
 
 To estimate the probability that each of these scenarios would happen, we need some information on the distribution of letters within the list of eligible words. The attached program does that by counting the frequency with which each letter occurs in each position for whichever 5-letter Scrabble words we have not excluded yet.
@@ -31,7 +30,7 @@ From this count of word frequencies, for a position *i* and letter *j* we can es
 - Prob(Scenario 2) = [(number of words that contain letter *j*)-(number of words that contain letter *j* in position *i*)]/(total number of remaining words)
 
 - Prob(Scenario 3) = [(total number of remaining words)-(number of words that contain letter *j*)]/(total number of remaining words)
--
+
 We can estimate the payoffs (i.e., how many words each scenerio would be able to rule out) as:
 
 - Payoff(Scenario 1) = (total number of remaining words)-(number of words that contain letter *j* in position *i*)
