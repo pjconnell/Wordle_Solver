@@ -7,19 +7,13 @@ Wordle (link: https://www.powerlanguage.co.uk/wordle/) is a word game in which t
 
 Assuming that Wordle accepts all Scrabble words and chooses the answer from these words with equal probability, one approach to finding a solution is as follows.
 
-~10,000 5-letter scrabble words.
+Wordle gives us information on a letter-by-letter basis, so we want to maximize the expected amount of ruling out that we can do with each letter of our guess. To that end, there are three possibilities for what sort of information we can learn from a guessed letter:
 
-want to maximize the number we can rule out with each guess.
+- (1) that the letter is in the answer, in the position we guessed it. In this case, we can rule out all the words that do not have this letter in this position. 
 
-wordle gives us info on a letter-by-letter basis, so we want to maximize the expected amount of ruling out that we can do with each letter of our guess.
+- (2) that the letter is in the answer, but in a different position. In this case, we can rule out all of the words that do not contain this letter at all.
 
-We want to figure out what the value of including each letter in our guess is. There are three possibilities: 
-
-(1) that the letter is in the answer, in the position we guessed it. In this case, we can rule out all the words that do not have this letter in this position. 
-
-(2) that the letter is in the answer, but in a different position. In this case, we can rule out all of the words that do not contain this letter at all.
-
-(3) that this letter does not appear in the answer. In this case, we can rule out all of the words that contain this letter.
+- (3) that this letter does not appear in the answer. In this case, we can rule out all of the words that contain this letter.
 
 
 However, knowing the potential payoff for each of these possibilties is not enough - we also need an estimate of the probabilty that (1) vs. (2) vs. (3) will be the case. [E.g., there is only one word with "Q" in the second to last spot - putting a "Q" there could potentially rule out a lot of potential words ... but it is also exceedingly unlikely to be correct!]
