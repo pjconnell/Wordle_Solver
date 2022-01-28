@@ -1,2 +1,2 @@
-# Wordle_Solver - SAMEY is the best first guess
+# Wordle_Solver
 Uses a Scrabble dictionary to solve the Wordle puzzle
