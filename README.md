@@ -3,7 +3,7 @@ Uses a Scrabble dictionary to solve the Wordle puzzle
 
 Wordle (link: https://www.powerlanguage.co.uk/wordle/) is a word game in which the player tries to guess the identity of a hidden five letter word. After submitting a guess, the website reveals which letters of the guessed word are not in the hidden word, which are in the hidden word but in a different position, and which letters are in the correct position for the hidden word. Here is an example:
 
-[Insert picture]
+![alt text](https://github.com/pjconnell/Wordle_Solver/Wordle_Pic.PNG)
 
 Assuming that Wordle accepts all Scrabble words and chooses the answer from these words with equal probability (not necessarily so, see ...), one approach to finding a solution is as follows.
 
