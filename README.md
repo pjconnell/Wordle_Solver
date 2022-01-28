@@ -5,7 +5,7 @@ Wordle (link: https://www.powerlanguage.co.uk/wordle/) is a word game in which t
 
 ![alt text](https://github.com/pjconnell/Wordle_Solver/blob/main/Wordle_Pic.PNG)
 
-Assuming that Wordle accepts all Scrabble words and chooses the answer from these words with equal probability (not necessarily so, see ...), one approach to finding a solution is as follows.
+Assuming that Wordle accepts all Scrabble words and chooses the answer from these words with equal probability, one approach to finding a solution is as follows.
 
 ~10,000 5-letter scrabble words.
 
